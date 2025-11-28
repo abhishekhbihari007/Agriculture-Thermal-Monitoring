@@ -49,7 +49,7 @@ const Crops = () => {
       parameters: ["Water Stress", "Nutrient Deficiency", "Disease Detection"],
       alert: null,
       details: "Excellent thermal profile. Optimal growing conditions maintained.",
-      image: "https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=800&h=600&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1576045057992-4c4c79a5b5b3?w=800&h=600&fit=crop&q=80",
     },
     {
       name: "Creepers (Cucumber)",
@@ -67,7 +67,7 @@ const Crops = () => {
       parameters: ["Disease Detection", "Water Stress", "Pest Detection"],
       alert: null,
       details: "Early fungal detection system active. No concerns detected.",
-      image: "https://images.unsplash.com/photo-1593113616828-c4bca6c47502?w=800&h=600&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1576045057992-4c4c79a5b5b3?w=800&h=600&fit=crop&q=80",
     },
     {
       name: "Papaya",
@@ -76,7 +76,7 @@ const Crops = () => {
       parameters: ["Heat Stress", "Water Stress", "Microclimate"],
       alert: null,
       details: "Excellent thermal regulation. Growth proceeding as expected.",
-      image: "https://images.unsplash.com/photo-1615485925511-48e5b0b6d0e2?w=800&h=600&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=600&fit=crop&q=80",
     },
     {
       name: "Spinach (Palak)",
@@ -85,7 +85,7 @@ const Crops = () => {
       parameters: ["Water Stress", "Nutrient Deficiency", "Disease Detection", "Leaf Temperature"],
       alert: null,
       details: "Optimal thermal profile for leafy greens. Leaf temperature monitoring shows healthy transpiration rates.",
-      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=600&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=800&h=600&fit=crop&q=80",
     },
   ];
 
