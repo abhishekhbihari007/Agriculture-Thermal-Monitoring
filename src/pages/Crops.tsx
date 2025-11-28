@@ -13,14 +13,43 @@ const Crops = () => {
       parameters: ["Water Stress", "Disease Detection", "Heat Stress"],
       alert: null,
       details: "Optimal thermal profile. No intervention required.",
+      image: "https://images.unsplash.com/photo-1615485925511-48e5b0b6d0e2?w=800&h=600&fit=crop&q=80",
     },
     {
-      name: "Leafy Vegetables",
+      name: "Lettuce",
+      layer: "Layer 2",
+      status: "healthy",
+      parameters: ["Water Stress", "Nutrient Deficiency", "Microclimate"],
+      alert: null,
+      details: "Optimal growth conditions. Leaf temperature within normal range.",
+      image: "https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=800&h=600&fit=crop&q=80",
+    },
+    {
+      name: "Kale",
+      layer: "Layer 2",
+      status: "healthy",
+      parameters: ["Water Stress", "Nutrient Deficiency", "Leaf Temperature"],
+      alert: null,
+      details: "Healthy transpiration rates. No signs of stress detected.",
+      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=600&fit=crop&q=80",
+    },
+    {
+      name: "Cabbage",
       layer: "Layer 2",
       status: "warning",
       parameters: ["Water Stress", "Nutrient Deficiency", "Microclimate"],
-      alert: "Water deficit detected",
-      details: "CWSI elevated to 0.68. Schedule irrigation within 24 hours.",
+      alert: "Slight water deficit detected",
+      details: "CWSI slightly elevated to 0.52. Monitor closely for next 24 hours.",
+      image: "https://images.unsplash.com/photo-1593113616828-c4bca6c47502?w=800&h=600&fit=crop&q=80",
+    },
+    {
+      name: "Arugula",
+      layer: "Layer 2",
+      status: "healthy",
+      parameters: ["Water Stress", "Nutrient Deficiency", "Disease Detection"],
+      alert: null,
+      details: "Excellent thermal profile. Optimal growing conditions maintained.",
+      image: "https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?w=800&h=600&fit=crop&q=80",
     },
     {
       name: "Creepers (Cucumber)",
@@ -29,6 +58,7 @@ const Crops = () => {
       parameters: ["Disease Detection", "Stomatal Conductance", "Heat Stress"],
       alert: null,
       details: "Strong transpiration activity. Healthy growth patterns observed.",
+      image: "https://images.unsplash.com/photo-1592841200221-a6898a8d0233?w=800&h=600&fit=crop&q=80",
     },
     {
       name: "Brinjal (Eggplant)",
@@ -37,6 +67,7 @@ const Crops = () => {
       parameters: ["Disease Detection", "Water Stress", "Pest Detection"],
       alert: null,
       details: "Early fungal detection system active. No concerns detected.",
+      image: "https://images.unsplash.com/photo-1593113616828-c4bca6c47502?w=800&h=600&fit=crop&q=80",
     },
     {
       name: "Papaya",
@@ -45,6 +76,7 @@ const Crops = () => {
       parameters: ["Heat Stress", "Water Stress", "Microclimate"],
       alert: null,
       details: "Excellent thermal regulation. Growth proceeding as expected.",
+      image: "https://images.unsplash.com/photo-1615485925511-48e5b0b6d0e2?w=800&h=600&fit=crop&q=80",
     },
     {
       name: "Spinach (Palak)",
@@ -53,6 +85,7 @@ const Crops = () => {
       parameters: ["Water Stress", "Nutrient Deficiency", "Disease Detection", "Leaf Temperature"],
       alert: null,
       details: "Optimal thermal profile for leafy greens. Leaf temperature monitoring shows healthy transpiration rates.",
+      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=600&fit=crop&q=80",
     },
   ];
 
@@ -91,15 +124,36 @@ const Crops = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {/* Crop Image Placeholder */}
-                    <div className="aspect-video bg-gradient-to-br from-secondary/20 to-primary/20 rounded-lg flex items-center justify-center">
-                      <div className="text-center">
-                        {crop.status === 'healthy' ? (
-                          <CheckCircle className="h-12 w-12 text-secondary mx-auto" />
-                        ) : (
-                          <AlertCircle className="h-12 w-12 text-accent mx-auto" />
-                        )}
-                      </div>
+                    {/* Crop Image */}
+                    <div className="aspect-video bg-gradient-to-br from-secondary/20 to-primary/20 rounded-lg overflow-hidden relative">
+                      {crop.image ? (
+                        <>
+                          <img 
+                            src={crop.image} 
+                            alt={crop.name}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                          {/* Status Indicator Overlay */}
+                          <div className="absolute top-2 right-2">
+                            {crop.status === 'healthy' ? (
+                              <div className="h-3 w-3 bg-green-400 rounded-full border-2 border-white shadow-lg"></div>
+                            ) : crop.status === 'warning' ? (
+                              <div className="h-3 w-3 bg-orange-400 rounded-full border-2 border-white animate-pulse shadow-lg"></div>
+                            ) : (
+                              <div className="h-3 w-3 bg-red-400 rounded-full border-2 border-white shadow-lg"></div>
+                            )}
+                          </div>
+                        </>
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          {crop.status === 'healthy' ? (
+                            <CheckCircle className="h-12 w-12 text-secondary" />
+                          ) : (
+                            <AlertCircle className="h-12 w-12 text-accent" />
+                          )}
+                        </div>
+                      )}
                     </div>
 
                     {/* Alert Message */}
@@ -141,7 +195,7 @@ const Crops = () => {
                 <CardTitle className="text-lg">Total Crops</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold text-primary">6</div>
+                <div className="text-3xl font-bold text-primary">9</div>
                 <p className="text-sm text-muted-foreground mt-1">Across 4 layers</p>
               </CardContent>
             </Card>
@@ -151,8 +205,8 @@ const Crops = () => {
                 <CardTitle className="text-lg">Healthy Status</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold text-secondary">83%</div>
-                <p className="text-sm text-muted-foreground mt-1">5 of 6 crops optimal</p>
+                <div className="text-3xl font-bold text-secondary">89%</div>
+                <p className="text-sm text-muted-foreground mt-1">8 of 9 crops optimal</p>
               </CardContent>
             </Card>
 
