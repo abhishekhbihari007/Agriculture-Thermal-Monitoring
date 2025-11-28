@@ -46,6 +46,14 @@ const Crops = () => {
       alert: null,
       details: "Excellent thermal regulation. Growth proceeding as expected.",
     },
+    {
+      name: "Spinach (Palak)",
+      layer: "Layer 2",
+      status: "healthy",
+      parameters: ["Water Stress", "Nutrient Deficiency", "Disease Detection", "Leaf Temperature"],
+      alert: null,
+      details: "Optimal thermal profile for leafy greens. Leaf temperature monitoring shows healthy transpiration rates.",
+    },
   ];
 
   return (
@@ -133,7 +141,7 @@ const Crops = () => {
                 <CardTitle className="text-lg">Total Crops</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold text-primary">5</div>
+                <div className="text-3xl font-bold text-primary">6</div>
                 <p className="text-sm text-muted-foreground mt-1">Across 4 layers</p>
               </CardContent>
             </Card>
@@ -143,8 +151,8 @@ const Crops = () => {
                 <CardTitle className="text-lg">Healthy Status</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold text-secondary">80%</div>
-                <p className="text-sm text-muted-foreground mt-1">4 of 5 crops optimal</p>
+                <div className="text-3xl font-bold text-secondary">83%</div>
+                <p className="text-sm text-muted-foreground mt-1">5 of 6 crops optimal</p>
               </CardContent>
             </Card>
 

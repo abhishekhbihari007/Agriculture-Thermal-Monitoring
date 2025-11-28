@@ -182,3 +182,199 @@ All colors MUST be HSL.
     @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4;
   }
 }
+
+/* Print Styles */
+@media print {
+  /* Hide navigation and non-essential elements */
+  nav,
+  footer,
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  /* Page setup */
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+
+  /* Body and container adjustments */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  /* Container adjustments */
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    color: black !important;
+    page-break-after: avoid;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  h1 {
+    font-size: 24pt;
+    border-bottom: 2pt solid black;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+  }
+
+  h2 {
+    font-size: 18pt;
+    margin-top: 1.5em;
+  }
+
+  h3 {
+    font-size: 14pt;
+  }
+
+  /* Cards and containers */
+  .card,
+  [class*="Card"] {
+    border: 1pt solid #ccc !important;
+    background: white !important;
+    page-break-inside: avoid;
+    margin-bottom: 1em;
+    padding: 1em;
+    box-shadow: none !important;
+  }
+
+  /* Charts - hide or show as needed */
+  canvas,
+  svg {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* Tables */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    page-break-inside: avoid;
+  }
+
+  table th,
+  table td {
+    border: 1pt solid #ccc;
+    padding: 0.5em;
+    text-align: left;
+  }
+
+  table th {
+    background: #f0f0f0 !important;
+    font-weight: bold;
+  }
+
+  /* Lists */
+  ul, ol {
+    page-break-inside: avoid;
+  }
+
+  /* Links */
+  a {
+    color: black !important;
+    text-decoration: underline;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+
+  /* Avoid page breaks */
+  .no-break {
+    page-break-inside: avoid;
+  }
+
+  /* Print header */
+  .print-header {
+    display: block;
+    text-align: center;
+    border-bottom: 2pt solid black;
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+  }
+
+  .print-header h1 {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-date {
+    font-size: 10pt;
+    color: #666;
+    margin-top: 0.5em;
+  }
+
+  /* Summary cards in print */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    margin-bottom: 1em;
+  }
+
+  /* Charts container */
+  .recharts-wrapper {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+  }
+
+  /* Badges and labels */
+  [class*="Badge"],
+  [class*="badge"] {
+    border: 1pt solid #ccc !important;
+    background: white !important;
+    color: black !important;
+    padding: 0.2em 0.5em;
+  }
+
+  /* Spacing adjustments */
+  .space-y-6 > * + * {
+    margin-top: 1em;
+  }
+
+  .mb-8 {
+    margin-bottom: 1em;
+  }
+
+  .py-8 {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Hide interactive elements */
+  button,
+  .button,
+  [role="button"] {
+    display: none !important;
+  }
+
+  /* Show print-specific content */
+  .print\\:block {
+    display: block !important;
+  }
+
+  /* Footer for print */
+  .print-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 10pt;
+    color: #666;
+    border-top: 1pt solid #ccc;
+    padding-top: 0.5em;
+  }
+}

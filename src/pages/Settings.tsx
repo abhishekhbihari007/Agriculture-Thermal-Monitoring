@@ -26,6 +26,7 @@ const Settings = () => {
     { name: "Cucumber", optimalTemp: "22-28°C", cwsiThreshold: 0.35, waterStress: "moderate" },
     { name: "Brinjal", optimalTemp: "24-30°C", cwsiThreshold: 0.45, waterStress: "low" },
     { name: "Papaya", optimalTemp: "26-32°C", cwsiThreshold: 0.5, waterStress: "low" },
+    { name: "Spinach (Palak)", optimalTemp: "18-25°C", cwsiThreshold: 0.3, waterStress: "high" },
   ];
 
   // Sample users

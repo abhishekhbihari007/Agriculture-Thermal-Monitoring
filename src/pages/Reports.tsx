@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, AreaChart, Area } from "recharts";
-import { Download, Calendar, TrendingUp, AlertTriangle, Droplets, Thermometer, FileText, BarChart3, Filter } from "lucide-react";
+import { Download, Calendar, TrendingUp, AlertTriangle, Droplets, Thermometer, FileText, BarChart3, Filter, Printer } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
@@ -62,6 +62,10 @@ const Reports = () => {
       timestamp: "3 hours ago"
     }
   ];
+
+  const handlePrint = () => {
+    window.print();
+  };
 
   const generateReport = (type: string) => {
     // Create a comprehensive report
@@ -147,17 +151,23 @@ const Reports = () => {
     <div className="flex min-h-screen flex-col">
       <Navbar />
       
-      <main className="flex-1 py-8">
+      <main className="flex-1 py-8 print:p-0">
         <div className="container mx-auto px-4">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Reports & Analytics</h1>
-            <p className="text-muted-foreground">
-              Comprehensive analysis and reporting for your thermal monitoring system
-            </p>
+          <div className="mb-8 flex items-start justify-between">
+            <div>
+              <h1 className="text-3xl font-bold mb-2">Reports & Analytics</h1>
+              <p className="text-muted-foreground">
+                Comprehensive analysis and reporting for your thermal monitoring system
+              </p>
+            </div>
+            <Button onClick={handlePrint} variant="outline" className="print:hidden">
+              <Printer className="mr-2 h-4 w-4" />
+              Print Report
+            </Button>
           </div>
 
           <Tabs defaultValue="overview" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4">
+            <TabsList className="grid w-full grid-cols-4 print:hidden">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="performance">Performance</TabsTrigger>
               <TabsTrigger value="anomalies">Anomalies</TabsTrigger>
@@ -332,7 +342,7 @@ const Reports = () => {
               </Card>
             </TabsContent>
 
-            <TabsContent value="reports" className="space-y-6">
+            <TabsContent value="reports" className="space-y-6 print:hidden">
               {/* Date Range Selection */}
               <Card>
                 <CardHeader>

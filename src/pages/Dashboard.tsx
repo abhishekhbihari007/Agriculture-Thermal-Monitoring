@@ -2,10 +2,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
-import { Thermometer, Droplets, AlertTriangle, TrendingUp, Play, Pause, RotateCcw, Maximize2 } from "lucide-react";
+import { Thermometer, Droplets, AlertTriangle, TrendingUp, Play, Pause, RotateCcw, Maximize2, Flame, Snowflake } from "lucide-react";
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ThermalMapAnnotation from "@/components/ThermalMapAnnotation";
 
 const Dashboard = () => {
   const [selectedLayer, setSelectedLayer] = useState(2);
@@ -147,7 +148,7 @@ const Dashboard = () => {
                   
                   {/* Plant Zones */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="grid grid-cols-3 gap-4 w-3/4 h-3/4">
+                    <div className="grid grid-cols-2 gap-4 w-3/4 h-3/4">
                       {/* Plant 1 - Healthy */}
                       <div className="bg-green-500/20 border-2 border-green-400 rounded-lg flex items-center justify-center relative">
                         <div className="text-center text-white">
@@ -174,8 +175,20 @@ const Dashboard = () => {
                         </div>
                         <div className="absolute -top-1 -right-1 h-3 w-3 bg-green-400 rounded-full"></div>
                       </div>
+                      
+                      {/* Plant 4 - Healthy (Spinach/Palak) */}
+                      <div className="bg-green-500/20 border-2 border-green-400 rounded-lg flex items-center justify-center relative">
+                        <div className="text-center text-white">
+                          <div className="text-xs font-bold">Spinach (Palak)</div>
+                          <div className="text-xs">28.2°C</div>
+                        </div>
+                        <div className="absolute -top-1 -right-1 h-3 w-3 bg-green-400 rounded-full"></div>
+                      </div>
                     </div>
                   </div>
+                  
+                  {/* Hot/Cold Spot Annotations */}
+                  <ThermalMapAnnotation showLabels={true} />
                   
                   {/* Temperature Scale */}
                   <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
@@ -197,6 +210,16 @@ const Dashboard = () => {
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 bg-green-500 rounded"></div>
                           <span className="text-white text-xs">Cool</span>
+                        </div>
+                      </div>
+                      <div className="mt-2 pt-2 border-t border-white/20">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Flame className="h-3 w-3 text-red-500" />
+                          <span className="text-white text-xs">Hot Spots</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Snowflake className="h-3 w-3 text-blue-400" />
+                          <span className="text-white text-xs">Cold Spots</span>
                         </div>
                       </div>
                     </div>
